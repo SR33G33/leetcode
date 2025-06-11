@@ -9,6 +9,8 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
+        if len(s)%2 == 1:
+            return False
     
         paren_stack = []
 
