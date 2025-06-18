@@ -1,0 +1,9 @@
+# 1479. Sales by Day of the Week
+
+# This questions is only for paid Leetcode subscribers.
+
+# This questions is only for paid Leetcode subscribers.
+# Generating a generic Python code stub
+class Solution:
+    def salesByDayOfTheWeek(self) -> Any:
+      return

@@ -1,0 +1,9 @@
+# 1303. Find the Team Size
+
+# This questions is only for paid Leetcode subscribers.
+
+# This questions is only for paid Leetcode subscribers.
+# Generating a generic Python code stub
+class Solution:
+    def findTheTeamSize(self) -> Any:
+      return
