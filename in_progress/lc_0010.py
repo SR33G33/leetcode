@@ -11,4 +11,35 @@
 
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
-        return
+        p_i = 0
+        star = False
+
+        if(p == s): return True
+
+        while len(s) > 0 and p_i < len(p):
+            curr_match = p[p_i]
+            if(p_i < len(p)-1): 
+                if(p[p_i + 1] == '*'):
+                    star = True
+                    p_i += 1
+            if(star):
+                while (s[0] == curr_match or curr_match == '.'):
+                    if(len(s) == 1): return p_i == len(p)-1
+                    s = s[1:]
+            else:
+                # print(f"{s}, curr match = {curr_match}")
+                # print(f"first elem and curr {s[0] == curr_match or curr_match =='.'}")
+                if(s[0] == curr_match or curr_match == '.'): s = s[1:]
+                else: return False
+            p_i += 1
+            star = False
+        print(p_i)
+        print(s)
+        return (len(s) == 0 and p_i == len(p))
+
+s = Solution()
+print(s.isMatch("aa", "a"))
+print(s.isMatch("aa", "aa"))
+print(s.isMatch("aab", "aa"))
+print(s.isMatch("aab", ".*"))
+print(s.isMatch("ab", ".*c"))
