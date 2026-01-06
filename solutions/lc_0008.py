@@ -36,6 +36,33 @@
 # Example 5: Input: s = "words and 987" Output: 0 Explanation: Reading stops at the first non-digit character 'w'.
 # Constraints: 0 <= s.length <= 200 s consists of English letters (lower-case and upper-case), digits ( 0-9 ), ' ' , '+' , '-' , and '.' .
 
+import re
+
 class Solution:
     def myAtoi(self, s: str) -> int:
-        return
+        s = s.strip()
+
+        integer = re.findall(r'^[\+\-]?\d+', s)
+        print(integer)
+
+        if(not s[0].isdigit() and s[0] != '+' and s[0] != '-'):
+            return 0
+        
+        if(not integer):
+            return 0
+
+        firstNum = int(integer[0])
+
+        if(firstNum < -2147483648):
+            return -2147483648
+        elif(firstNum > 2147483647):
+            return 2147483647
+
+        return firstNum
+
+s = Solution()
+print(s.myAtoi("42"))          # Output: 42
+print(s.myAtoi("   -42"))      # Output: -42
+print(s.myAtoi("4193 with words"))  # Output: 4193
+print(s.myAtoi("words and 987"))    # Output: 0
+print(s.myAtoi("+-12"))    # Output: 0
