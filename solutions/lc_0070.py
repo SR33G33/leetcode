@@ -4,16 +4,15 @@
 # Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 
 class Solution(object):
-    def addBinary(self, a, b):
-        """
-        :type a: str
-        :type b: str
-        :rtype: str
-        """
-        return str(bin(int(a, 2) + int(b, 2)))[2:]
+    def climbStairs(self, n: int) -> int:
+        if n <= 2:
+            return n
         
-
-sol = Solution()
-print(sol.addBinary(a = "11", b = "1"))
-print(sol.addBinary(a = "1010", b = "1011"))
-
+        first = 1
+        second = 2
+        for i in range(3, n + 1):
+            third = first + second
+            first = second
+            second = third
+        
+        return second
