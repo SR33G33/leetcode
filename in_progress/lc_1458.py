@@ -11,6 +11,25 @@
 # Their dot product is -1.
 # Constraints: 1 <= nums1.length, nums2.length <= 500 -1000 <= nums1[i], nums2[i] <= 1000
 
+import numpy as np
+
 class Solution:
-    def maxDotProduct(self, nums1: List[int], nums2: List[int]) -> int:
-        return
+    def maxDotProduct(self, nums1, nums2) -> int:
+        f = [[float('-inf') for _ in range(len(nums2))] for _ in range(len(nums1))]
+        f[0][0] = max(0, nums1[0]*nums2[0])
+
+        for i in range(0, len(nums1)):
+            for j in range(0, len(nums2)):
+                if (not (i == 0 and j == 0)):
+                    print(np.asarray(f))
+
+                    f[i][j] = max(f[i][j-1], f[i-1][j], f[i-1][j-1] + nums1[i]*nums2[j])
+        
+        print(np.asarray(f))
+        return f[len(nums1)-1][len(nums2)-1]
+
+s = Solution()
+
+print(s.maxDotProduct([2,1,-2,5], [3,0,-6]))
+print(s.maxDotProduct([3,-2], [2,-6,7]))
+print(s.maxDotProduct([-1,-1], [1,1]))
