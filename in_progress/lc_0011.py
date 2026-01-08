@@ -10,5 +10,22 @@
 # Example 2: Input: height = [1,1] Output: 1 Constraints: n == height.length 2 <= n <= 10 5 0 <= height[i] <= 10 4
 
 class Solution:
-    def maxArea(self, height: List[int]) -> int:
-        return
+    def maxArea(self, height) -> int:
+        left = 0
+        right = len(height) - 1
+        max_vol = 0
+        while (left < right):
+            volume = (right-left) * min(height[left], height[right])
+            print(volume)
+            if(volume > max_vol): max_vol = volume
+
+            if(height[left] < height[right]): left += 1
+            else: right -= 1
+
+        return max_vol
+    
+s = Solution()
+
+# print(s.maxArea([1,8,6,2,5,4,8,3,7]))
+# print(s.maxArea([1,1]))
+print(s.maxArea([8,7,2,1]))
