@@ -16,5 +16,19 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    currMax = float('-inf')
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        return
+        def dfsHelper(node):
+            if node is None: return 0
+
+            leftPath = dfsHelper(node.left)
+            rightPath = dfsHelper(node.right)
+            currPathSum = node.val + max(0, leftPath) + max(0, rightPath)
+
+            print(f"nodeVal {node.val}, {leftPath}, {rightPath}, optimum: {currPathSum}")
+
+            self.currMax = max(currPathSum, self.currMax)
+            return node.val + max(leftPath, rightPath, 0)
+
+        dfsHelper(root)
+        return self.currMax
