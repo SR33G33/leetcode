@@ -8,5 +8,31 @@
 # Example 2: Input: n = 1 Output: [["Q"]] Constraints: 1 <= n <= 9
 
 class Solution:
-    def solveNQueens(self, n: int) -> List[List[str]]:
+    def solveNQueens(self, n: int):
+
+        solutions = []
+
+        solution = [['.'*n] for _ in range(n)]
+
+        for row in range(n):
+            backtrack = False
+            solution = [['.'*n] for _ in range(n)]
+
+
+            # print (solution)
+            for col in range(n):
+                if(isValid(solution, row, col)):
+                    backTrack = solution
+                    solution[row][col] == 'Q'
+                    if(row == n-1): solutions.append(solution)
+                solution = backTrack
+                    
         return
+    def isValid(board, x, y):
+
+        return True
+
+
+
+s = Solution()
+print(s.solveNQueens(2))
