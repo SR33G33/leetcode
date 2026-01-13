@@ -15,8 +15,14 @@
 # Constraints: nums1.length == m + n nums2.length == n 0 <= m, n <= 200 1 <= m + n <= 200 -10 9 <= nums1[i], nums2[j] <= 10 9 Follow up: Can you come up with an algorithm that runs in O(m + n) time?
 
 class Solution:
-    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+    def merge(self, nums1, m, nums2, n) -> None:
         """
         Do not return anything, modify nums1 in-place instead.
         """
+        nums1[m:] = nums2
+        nums1.sort()
+
         return
+
+s = Solution()
+print(s.merge(nums1 = [1,2,3,0,0,0], nums2 = [2,5,6]))
