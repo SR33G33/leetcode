@@ -14,4 +14,11 @@
 #         self.right = right
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        return
+        def dfsHelper(node, list):
+            if node is None: return
+            dfsHelper(node.left, list)
+            list.append(node.val)
+            dfsHelper(node.right, list)
+        list = []
+        dfsHelper(root, list)
+        return list
