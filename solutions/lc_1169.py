@@ -13,4 +13,41 @@
 
 class Solution:
     def invalidTransactions(self, transactions: List[str]) -> List[str]:
-        return
+        sortedTransactions = {}
+        invalid = []
+
+        for transaction in transactions:
+            invalidBool = False
+            name, (time), (price), city = tuple(transaction.split(","))
+
+            if(int(price) > 1000):
+                invalidBool = True
+
+            if(name not in sortedTransactions.keys()):
+                sortedTransactions[name] = [(int(time), int(price), city, invalidBool)]
+            else: 
+
+                otherTransactions = sortedTransactions[name]
+
+                for i in range (len(otherTransactions)):
+                    trans = otherTransactions[i]
+
+                    timeDiff = abs(int(time)-int(trans[0]))
+                    if(timeDiff <= 60 and city != trans[2]):
+                        otherTransactions[i] = (trans[0], trans[1], trans[2], True)  
+                        invalidBool = True
+
+                sortedTransactions[name].append((int(time), int(price), city, invalidBool))
+                sortedTransactions[name].sort()   
+
+        print(sortedTransactions)
+
+        for name in sortedTransactions.keys():
+            transactionList = sortedTransactions[name]
+            for transaction in transactionList:
+                if transaction[3] == True:
+                    invalid.append(f"{name},{transaction[0]},{transaction[1]},{transaction[2]}")
+
+
+        return list((invalid))
+        print(sortedTransactions)
