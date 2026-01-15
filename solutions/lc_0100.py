@@ -14,4 +14,10 @@
 #         self.right = right
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        return
+        def traverse(node1, node2):
+            if(node1 is None or node2 is None):
+                return (node1 is None and node2 is None)
+            if(node1.val == node2.val):
+                return traverse(node1.right, node2.right) and traverse(node1.left, node2.left)
+            return False
+        return traverse(p, q)
