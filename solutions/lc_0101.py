@@ -12,4 +12,10 @@
 #         self.right = right
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        return
+        def helper(left, right):
+            if(left is None or right is None):
+                return (left is None and right is None)
+            if(left.val == right.val):
+                return helper(left.left, right.right) and helper(left.right, right.left)
+            return False
+        return helper(root.left, root.right)
