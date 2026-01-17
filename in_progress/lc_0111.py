@@ -13,5 +13,16 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    minD = float('inf')
     def minDepth(self, root: Optional[TreeNode]) -> int:
-        return
+        def helper(node, depth):
+            if(node is None): return
+            depth += 1
+            if(node.left is None and node.right is None):
+                self.minD = min(self.minD, depth)
+            helper(node.left, depth)
+            helper(node.right, depth)
+        
+        if(root is None): return 0
+        helper(root, 0)
+        return self.minD

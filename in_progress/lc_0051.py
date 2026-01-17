@@ -16,11 +16,10 @@ class Solution:
 
         for row in range(n):
             backtrack = False
-            solution = [['.'*n] for _ in range(n)]
-
 
             # print (solution)
             for col in range(n):
+                
                 if(isValid(solution, row, col)):
                     backTrack = solution
                     solution[row][col] == 'Q'
