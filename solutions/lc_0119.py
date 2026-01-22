@@ -8,4 +8,8 @@
 
 class Solution:
     def getRow(self, rowIndex: int) -> List[int]:
-        return
+        row = [0] * (rowIndex + 1)
+        for i in range(len(row)):
+            row[i] = int(math.factorial(rowIndex)/(math.factorial(rowIndex-(i))*math.factorial(i)))
+
+        return row
