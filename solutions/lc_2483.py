@@ -17,7 +17,6 @@
 # Constraints: 1 <= customers.length <= 10 5 customers consists only of characters 'Y' and 'N' .
 
 class Solution:
-class Solution:
     def bestClosingTime(self, customers: str) -> int:
         penalties = [float('inf')] * (len(customers) + 1)
 
