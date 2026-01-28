@@ -25,4 +25,32 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        return
+        if not head: return None
+        origIter = head
+        copyHead = Node(head.val)
+        copyIter = copyHead
+        iterNum = 0
+        origHash = {}
+
+        while origIter is not None:
+            origHash[origIter] = copyIter
+            iterNum += 1
+
+            origIter = origIter.next
+            if(origIter is None): break
+            copyIter.next = Node(origIter.val)
+            
+            copyIter = copyIter.next
+
+        origIter = head
+        copyIter = copyHead
+
+        while origIter is not None:
+            if(origIter.random is None): copyIter.random is None
+            else: 
+                copyIter.random = origHash[origIter.random]
+
+            origIter = origIter.next
+            copyIter = copyIter.next
+
+        return copyHead
