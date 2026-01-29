@@ -12,4 +12,21 @@
 #         self.next = next
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        return
+        last_n = []
+        headCopy = head
+        breakPoint = head
+
+        while head:
+            last_n.append(head)
+            if(len(last_n) > n):
+                breakPoint = last_n.pop(0)
+                print(breakPoint.val)
+            head = head.next    
+      
+
+        remove = last_n.pop(0)
+        if(headCopy == remove): headCopy = headCopy.next
+        if(len(last_n) == 0): breakPoint.next = None
+        else: breakPoint.next = last_n.pop(0)
+
+        return headCopy
