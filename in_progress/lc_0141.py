@@ -20,4 +20,13 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        return
+        i = 0 
+
+        current_node = head
+        while i < 10001:
+            if not current_node:
+                return False
+            current_node = current_node.next
+            i += 1
+
+        return True
