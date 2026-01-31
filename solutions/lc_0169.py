@@ -8,4 +8,9 @@
 
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        return
+        majority = int(len(nums)/2 + 1)
+        counts = defaultdict(int)
+
+        for num in nums:
+            counts[num] += 1
+            if(counts[num] >= majority): return num
