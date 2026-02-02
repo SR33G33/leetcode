@@ -13,4 +13,15 @@
 
 class Solution:
     def isHappy(self, n: int) -> bool:
-        return
+        nums = {}
+        curr_num = n
+        while curr_num != 1:
+            if curr_num in nums.keys():
+                return False
+            nums[curr_num] = True
+            curr_sum = 0
+            while curr_num != 0:
+                curr_sum += ((curr_num % 10) ** 2)
+                curr_num = curr_num // 10
+            curr_num = curr_sum
+        return True
