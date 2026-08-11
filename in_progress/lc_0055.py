@@ -10,4 +10,10 @@
 
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        return
+        maxJump = 0
+        for i in range(len(nums)):
+            if(maxJump >= i):
+                maxJump = max(maxJump, i + nums[i])
+            else: return False
+
+        return (maxJump >= len(nums) - 1)    
